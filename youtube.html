@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="content">
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            url: 'youtube.json',
+            method: 'GET',
+            success: function (data) {
+                for (let i = 0; i < data.length; i++) {
+                    $('#content').append(`<div>
+<img src="${data[i].thumbnails}" alt="">
+<h3>${data[i].title}</h3>
+<p>${data[i].description}</p>
+</div>`)
+                }
+            },
+            error: function () {
+
+            }
+        })
+    });
+</script>
+</body>
+
+</html>
